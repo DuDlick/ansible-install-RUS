@@ -1,0 +1,16 @@
+Что бы управлять серверами через Ansible, в перую очередь нам необходимо создать inventory(hosts) файл.
+
+Для этого мы:
+
+1) Задаём имя управляемого сервера(любое)
+
+2) Командой ansible-host мы задаём ip адрес рабочей машины
+
+3) Командой ansible_user мы задаём имя пользователя рабочей машины
+
+4) Командой ansible_ssh_private_key_file мы задаём путь к файлу, где лежит ssh ключ для подключения к рабочей машины
+
+[example]
+linux ansible_host=192.168.0.1 ansible_user={user_name} ansible_ssh_private_key_file=/home/{user_name}/.ssh/key.pub
+
+
