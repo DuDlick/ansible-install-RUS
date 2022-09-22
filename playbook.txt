@@ -1,0 +1,45 @@
+Это пример простого ansible playbook.yml
+
+Этот файл описывает все действия, которые должны произвестись на сервере (здесь есть более подробное описания синтаксиса: https://ansible-for-network-engineers.readthedocs.io/ru/latest/book/02_playbook_basics/README.html)
+
+В данном примере, я рассматриваю файл, который описывает обновление пакетов с последующей установкой apache, firewall ufw и стандартную настройку.
+
+Для запуска этого файла, нам необходимо ввести команду ansible-playbook {file_name}.yml
+Если в inventory файле было указано несколько серверов, но работа проходит лишь на одном, то не обходимо написать такую команду:Для запуска этого файла, нам необходимо ввести команду ansible-playbook {file_name}.yml -l {name_server}
+
+
+---
+- name: Install nginx
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Update
+    apt:
+      update_cache: true
+      upgrade: dist
+      force_apt_get: true
+  - name: Install Apache
+    apt:
+      name: apache2
+      state: latest
+  - name: Install ufw
+    apt:
+      name: ufw
+      state: latest
+  - name: Create document
+    file:
+      path: "/var/www/html"
+      state: directory
+      owner: "www-data"
+      mode: 0755
+  - name: Enable firewall
+    ufw:
+      rule: allow
+      port: 80
+      proto: tcp
+  - name: restart apache
+    service:
+      name: apache2
+      state: restarted
+                                  
