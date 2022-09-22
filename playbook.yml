@@ -1,6 +1,7 @@
 Это пример простого ansible playbook.yml
 
-Этот файл описывает все действия, которые должны произвестись на сервере (здесь есть более подробное описания синтаксиса: https://ansible-for-network-engineers.readthedocs.io/ru/latest/book/02_playbook_basics/README.html)
+Этот файл описывает все действия, которые должны произвестись на сервере 
+(здесь есть более подробное описания синтаксиса:https://ansible-for-network-engineers.readthedocs.io/ru/latest/book/02_playbook_basics/README.html)
 
 В данном примере, я рассматриваю файл, который описывает обновление пакетов с последующей установкой apache, firewall ufw и стандартную настройку.
 
